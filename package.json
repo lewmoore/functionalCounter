@@ -1,0 +1,19 @@
+{
+  "name": "functionalCounter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lewmoore/functionalCounter.git",
+  "author": "Lewis Moore <lewis.moore2707@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "hyperscript": "^2.0.2",
+    "hyperscript-helpers": "^3.0.3",
+    "virtual-dom": "^2.1.1",
+    "webpack": "^4.20.2",
+    "webpack-dev-server": "^3.1.9"
+  }
+}
