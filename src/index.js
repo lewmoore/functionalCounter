@@ -10,3 +10,7 @@ const view = (number) => {
         button('-'),
     ])
 }
+
+const rootNode = document.getElementById('app')
+
+rootNode.appendChild(view(0))
