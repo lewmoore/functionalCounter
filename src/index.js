@@ -1,11 +1,11 @@
-import hyperscript from 'hyperscript'
+import hyperscript from "hyperscript"
 import hyperscriptHelper from 'hyperscript-helpers'
 
-const { div } = hyperscriptHelper(hyperscript)
+const { div, button } = hyperscriptHelper(hyperscript)
 
 const view = (number) => {
     return div([
-        div(`Count: ${numner}`),
+        div(`Count: ${number}`),
         button('+'),
         button('-'),
     ])
