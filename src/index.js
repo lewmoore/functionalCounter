@@ -25,6 +25,16 @@ const update = (buttonClicked, number) => {
     }
 }
 
+// impure function below
+
+const app = (initNumber, update, view, node) => {
+    let model = initNumber
+    let currentView = view(model)
+    node.appendChild(currentView)
+}
+
 const rootNode = document.getElementById('app')
 
-rootNode.appendChild(view(initNumber)) 
+app(initNumber, update, view, rootNode)
+
+// rootNode.appendChild(view(update('Add', initNumber))) 
