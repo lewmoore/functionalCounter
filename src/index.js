@@ -3,13 +3,15 @@ import hyperscriptHelper from 'hyperscript-helpers'
 
 const { div, button } = hyperscriptHelper(hyperscript)
 
+const initNumber = 0 
+
 const view = (number) => {
     return div([
         div({ className: 'mv2' }, `Count: ${number}`),
         button({ className: 'pv1 ph2 mr2', 
-        onclick: (number) => { update(number)}}, '+'),
+        onclick: () => {} }, '+'),
         button({ className: 'pv1 ph2',
-        onclick: (number) => minus(number)}, '-'),
+        onclick: () => {} }, '-'),
     ])
 }
 
@@ -25,4 +27,4 @@ const update = (buttonClicked, number) => {
 
 const rootNode = document.getElementById('app')
 
-rootNode.appendChild(view(0))
+rootNode.appendChild(view(initNumber)) 
