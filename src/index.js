@@ -5,18 +5,18 @@ const { div, button } = hyperscriptHelper(hyperscript)
 
 const initNumber = 0 
 
-const view = (number) => {
+const view = (dispatch, number) => {
     return div([
         div({ className: 'mv2' }, `Count: ${number}`),
         button({ className: 'pv1 ph2 mr2', 
-        onclick: () => {} }, '+'),
+        onclick: () => dispatch('Add') } , '+'),
         button({ className: 'pv1 ph2',
-        onclick: () => {} }, '-'),
+        onclick: () => dispatch('Minus') }, '-'),
     ])
 }
 
 const update = (buttonClicked, number) => {
-    if (buttonClicked === 'Add') {
+    if (buttonClicked == 'Add') {
         return number + 1
     } else if (buttonClicked == 'Minus') {
         return number - 1 
@@ -28,9 +28,16 @@ const update = (buttonClicked, number) => {
 // impure function below
 
 const app = (initNumber, update, view, node) => {
-    let model = initNumber
-    let currentView = view(model)
+    let number = initNumber
+    let currentView = view(dispatch, number)
     node.appendChild(currentView)
+
+    function dispatch(buttonClicked) {
+        number = update(buttonClicked, number)
+        const updatedView = view(dispatch, number)
+        node.replaceChild(updatedView, currentView)
+        currentView = updatedView
+    }
 }
 
 const rootNode = document.getElementById('app')
