@@ -1,7 +1,8 @@
-import hyperscript from "hyperscript"
 import hyperscriptHelper from 'hyperscript-helpers'
+import { h, diff, patch } from 'virtual-dom'
+import createElement from 'virtual-dom/create-element'
 
-const { div, button } = hyperscriptHelper(hyperscript)
+const { div, button } = hyperscriptHelper(h)
 
 const initNumber = 0 
 
@@ -35,12 +36,14 @@ const update = (buttonClicked, number) => {
 const app = (initNumber, update, view, node) => {
     let number = initNumber
     let currentView = view(dispatch, number)
-    node.appendChild(currentView)
+    let rootNode = createElement(currentView)
+    node.appendChild(rootNode)
 
     function dispatch(buttonClicked) {
         number = update(buttonClicked, number)
         const updatedView = view(dispatch, number)
-        node.replaceChild(updatedView, currentView)
+        const patches = diff(currentView, updatedView)
+        rootNode = patch(rootNode, patches)
         currentView = updatedView
     }
 }
