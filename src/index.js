@@ -5,20 +5,25 @@ const { div, button } = hyperscriptHelper(hyperscript)
 
 const initNumber = 0 
 
+const MESSAGES = {
+    ADD: 'Add',
+    MINUS: 'Minus',
+}
+
 const view = (dispatch, number) => {
     return div([
         div({ className: 'mv2' }, `Count: ${number}`),
         button({ className: 'pv1 ph2 mr2', 
-        onclick: () => dispatch('Add') } , '+'),
+        onclick: () => dispatch(MESSAGES.ADD) } , '+'),
         button({ className: 'pv1 ph2',
-        onclick: () => dispatch('Minus') }, '-'),
+        onclick: () => dispatch(MESSAGES.MINUS) }, '-'),
     ])
 }
 
 const update = (buttonClicked, number) => {
-    if (buttonClicked == 'Add') {
+    if (buttonClicked == MESSAGES.ADD) {
         return number + 1
-    } else if (buttonClicked == 'Minus') {
+    } else if (buttonClicked == MESSAGES.MINUS) {
         return number - 1 
     } else {
         return number
