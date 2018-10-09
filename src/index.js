@@ -43,5 +43,3 @@ const app = (initNumber, update, view, node) => {
 const rootNode = document.getElementById('app')
 
 app(initNumber, update, view, rootNode)
-
-// rootNode.appendChild(view(update('Add', initNumber))) 
